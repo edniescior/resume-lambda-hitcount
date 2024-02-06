@@ -92,4 +92,4 @@ def test_lambda_handler_zero(dynamodb_table):
     # assert that the response is a success
     assert response["statusCode"] == 200
     # assert that the response contains the expected message
-    assert response["body"] == "Hit count update to: 1"
+    assert response["body"] == '{"count": 1}'

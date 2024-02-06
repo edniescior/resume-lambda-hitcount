@@ -52,5 +52,5 @@ def lambda_handler(event, context):
 
     return {
         "statusCode": 200,
-        "body": f"Hit count update to: {count}",
+        "body": f'{{"count": {count}}}',
     }
