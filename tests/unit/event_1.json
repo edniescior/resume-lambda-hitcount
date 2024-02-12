@@ -1,0 +1,81 @@
+{
+    "version": "1.0",
+    "resource": "/{proxy+}",
+    "path": "/stage/",
+    "httpMethod": "GET",
+    "headers": {
+        "Content-Length": "0",
+        "Host": "xxxxxxxxxx.execute-api.us-east-1.amazonaws.com",
+        "User-Agent": "curl/8.4.0",
+        "X-Amzn-Trace-Id": "Root=1-65c2b34b-13a5c59f328479f172fe7a02",
+        "X-Forwarded-For": "68.121.181.22",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https",
+        "accept": "*/*"
+    },
+    "multiValueHeaders": {
+        "Content-Length": [
+            "0"
+        ],
+        "Host": [
+            "xxxxxxxxxx.execute-api.us-east-1.amazonaws.com"
+        ],
+        "User-Agent": [
+            "curl/8.4.0"
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-65c2b34b-13a5c59f328479f172fe7a02"
+        ],
+        "X-Forwarded-For": [
+            "68.121.181.22"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ],
+        "accept": [
+            "*/*"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "requestContext": {
+        "accountId": "012345678910",
+        "apiId": "xxxxxxxxxx",
+        "domainName": "xxxxxxxxxx.execute-api.us-east-1.amazonaws.com",
+        "domainPrefix": "xxxxxxxxxx",
+        "extendedRequestId": "SvDz3jkSIAMEVGg=",
+        "httpMethod": "GET",
+        "identity": {
+            "accessKey": null,
+            "accountId": null,
+            "caller": null,
+            "cognitoAmr": null,
+            "cognitoAuthenticationProvider": null,
+            "cognitoAuthenticationType": null,
+            "cognitoIdentityId": null,
+            "cognitoIdentityPoolId": null,
+            "principalOrgId": null,
+            "sourceIp": "68.121.181.22",
+            "user": null,
+            "userAgent": "curl/8.4.0",
+            "userArn": null
+        },
+        "path": "/stage/",
+        "protocol": "HTTP/1.1",
+        "requestId": "SvDz3jkSIAMEVGg=",
+        "requestTime": "06/Feb/2024:22:31:39 +0000",
+        "requestTimeEpoch": 1707258699623,
+        "resourceId": "GET /{proxy+}",
+        "resourcePath": "/{proxy+}",
+        "stage": "stage"
+    },
+    "pathParameters": {
+        "proxy": ""
+    },
+    "stageVariables": null,
+    "body": null,
+    "isBase64Encoded": false
+}
