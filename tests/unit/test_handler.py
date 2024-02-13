@@ -28,7 +28,7 @@ def dynamodb_client(aws_credentials):
 
 @pytest.fixture(scope="function")
 def dynamodb_table(dynamodb_client):
-    os.environ["HITS_TABLE_NAME"] = "hits"
+    # os.environ["HITS_TABLE_NAME"] = "hits"  # noqa set in pytest.ini
     dynamodb_client.create_table(
         TableName="hits",
         KeySchema=[
@@ -41,7 +41,6 @@ def dynamodb_table(dynamodb_client):
     )
     yield dynamodb_client
     dynamodb_client.delete_table(TableName="hits")
-    del os.environ["HITS_TABLE_NAME"]
 
 
 # ===============================================================
@@ -64,7 +63,7 @@ def test_increment_counter_notzero(dynamodb_table):
     """
     Test that the counter is incremented to 1 more than the current setting.
     """
-     # initialize the hit counter to 7
+    # initialize the hit counter to 7
     dynamodb_table.put_item(
         TableName="hits",
         Item={
@@ -73,7 +72,7 @@ def test_increment_counter_notzero(dynamodb_table):
             "h_date": {"S": "2021-01-01"},
             "h_time": {"S": "12:00:00"},
             "h_ip": {"S": "127.0.0.1"},
-        }
+        },
     )
 
     count = increment_count()
@@ -85,7 +84,6 @@ def test_increment_counter_notzero(dynamodb_table):
     assert response["Item"]["h_count"]["N"] == "8"
 
 
-
 def test_lambda_handler_zero(dynamodb_table):
     # call the lambda handler function
     response = lambda_handler({}, {})
@@ -93,3 +91,15 @@ def test_lambda_handler_zero(dynamodb_table):
     assert response["statusCode"] == 200
     # assert that the response contains the expected message
     assert response["body"] == '{"count": 1}'
+
+
+def test_lambda_handler_notableenvset(dynamodb_table):
+    # test that the HITS_TABLE_NAME environment variable is set
+    # throws an error if it is not set.
+    del os.environ["HITS_TABLE_NAME"]
+    with pytest.raises(Exception) as excinfo:
+        lambda_handler({}, {})
+
+    assert "HITS_TABLE_NAME environment variable not set" in str(excinfo.value)
+    # reset the environment variable
+    os.environ["HITS_TABLE_NAME"] = "hits"
