@@ -3,9 +3,9 @@
 ## Description
 This AWS Lambda function acts as a backend service designed to update a user hitcount stored in a database. It is a pivotal component within a larger architecture developed as part of [The Cloud Resume Challenge](https://cloudresumechallenge.dev/). Triggered via API, it increments the hitcount value by 1.
 
-![](TODO.png)
+The function is triggered via API Gateway. The backing data store is DynamoDB.
 
-The backing database is DynamoDB.
+![Hitcounter](architecture.png)
 
 ## Functionality
 - Increment the hitcount value by 1.
